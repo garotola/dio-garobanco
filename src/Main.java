@@ -1,23 +1,13 @@
-import models.Cliente;
-import models.Conta;
-import models.ContaCorrente;
-import models.ContaPoupanca;
+import models.*;
 
 public class Main {
     public static void main(String[] args) {
+        Banco banpara = new Banco("Banpara");
         Cliente cliente = new Cliente("Rafael Batista");
-        Conta cc = new ContaCorrente(cliente);
-        Conta cp = new ContaPoupanca(cliente);
-        cc.depositar(100);
-        System.out.println("Antes da transferencia");
-        cc.imprimirExtrato();
-        cp.imprimirExtrato();
 
+        Conta cp1 = banpara.criarContaPoupanca(cliente);
+        Conta cp2 = banpara.criarContaPoupanca(cliente);
 
-        cc.transferir(cp, 100);
-
-        System.out.println("Depois da transferencia");
-        cc.imprimirExtrato();
-        cp.imprimirExtrato();
+        System.out.println(banpara.getContas());
     }
 }
